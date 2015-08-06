@@ -6,6 +6,7 @@ Open Source app with sticky notes.
 #sys requirements
 1. MongoDB
 installation tutorial for Ubuntu
+
 http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
 
 2. Node.js
