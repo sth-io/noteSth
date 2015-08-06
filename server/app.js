@@ -1,21 +1,25 @@
 /**
- * Module dependencies
- */
-var express = require('express'),
-    app = module.exports = express(),
-    domain = require('domain'),
-    http = require('http'),
-    conf = require('./config');
+ Module dependencies
+**/
+var express     = require('express'),
+    app         = module.exports = express(),
+    domain      = require('domain'),
+    mongoose    = require('mongoose')
+    http        = require('http'),
+    bodyParser     = require('body-parser'),
+    conf        = require('./config');
 
-// configuration =================================
-// =============================
-//mongoose.connect(configDB.url); // connect to our database
+/**
+ Connect to database
+**/
+mongoose.connect(conf.dbUrl); 
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
-//defines server port
-var port = conf.port;
+//server port
+app.set('port', process.env.PORT || conf.port);
 
-app.set('port', process.env.PORT || port);
 routes = require('./app/routes')(app);
 // anti crash
 d = domain.create();
