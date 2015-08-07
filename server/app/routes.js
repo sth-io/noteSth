@@ -1,5 +1,8 @@
-var sNote = require('./services/note'),
-    Note = require('./models/note');
+var sNote   = require('./services/note'),
+    Note    = require('./models/note'),
+    user    = require('./services/user');
+
+
 
 module.exports = function(app, passport) {
     app.get('/', function(req, res) {
@@ -50,7 +53,10 @@ module.exports = function(app, passport) {
         )});
     app.route('/api/user')
         .post(function(req, res) {
-            res.status(200).json(req.body)
+            user.register(req, res);
+        })
+        .put(function(req, res) {
+            user.edit(req, res);
         })
 }
              

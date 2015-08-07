@@ -15,7 +15,7 @@ module.exports = {
             note.save(function(err) {
                 if (err) return err;
                 res.end('succes');
-            })
+            });
         } else {
             res.json(400, {error:{invalid: errs}}); 
         }
