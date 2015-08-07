@@ -4,9 +4,8 @@ var mongoose = require('mongoose')
 
 // define the schema for our user model
 var userSchema = new mongoose.Schema({
-    login: String,
-    password: String,
     email: String,
+    password: String,
     dateAdded: Date,
     dateModified: Date
 })

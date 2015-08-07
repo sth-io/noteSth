@@ -2,8 +2,6 @@ var sNote = require('./services/note'),
     Note = require('./models/note');
 
 module.exports = function(app, passport) {
-    //    var plans = require('./services/plans');
-
     app.get('/', function(req, res) {
         res.end('pinged')
     });
@@ -49,6 +47,10 @@ module.exports = function(app, passport) {
                     res.status(200).json(note);
                 }
             }
-        )})
+        )});
+    app.route('/api/user')
+        .post(function(req, res) {
+            res.status(200).json(req.body)
+        })
 }
              

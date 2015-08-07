@@ -9,14 +9,24 @@ describe("checkReqKeys", function () {
         content: 'some content',
         type: '1',
         owner: 'test'
-    }
+    };
+    var reqFields = {'owner': 'string', 'title': 'string', 'type': 'string', 'content': 'string'};
+    expect(check(sampleNote, reqFields)).toBe(true);
+
     var badNote = {
         content: 1,
         type: '1',
         owner: 'test'
-    }
-    var reqFields = ['owner', 'title', 'type', 'content']
-    expect(check(Note, sampleNote, reqFields)).toBe(true);
-    expect(typeof check(Note, badNote, reqFields).length).toBe("number");
+    };
+    expect(typeof check(badNote, reqFields).length).toBe("number");
+    var mail = {
+        email: 'testmail@test.com',
+    };  
+    expect(check(mail, {email: "email"})).toBe(true);
+    var badmail = {
+        email: 'asdf@asd',
+    };  
+    expect(typeof check(badmail, {email: "email"}).length).toBe("number");
+      
   });
 });    

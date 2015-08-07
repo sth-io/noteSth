@@ -1,14 +1,14 @@
 var Note = require('../models/note'),
     checkReqKeys = require('./../functions/checkReqKeys'),
 
-    reqFields = ['owner', 'title', 'type', 'content'];
+    reqFields = {'owner': 'string', 'title': 'string', 'type': 'string', 'content': 'string'};
 
 
 module.exports = {
     add: function(req, res) {
         req.body.dateAdded = new Date();
         var note = new Note(req.body);
-        var errs = checkReqKeys(Note, req.body, reqFields);
+        var errs = checkReqKeys(req.body, reqFields);
         if (errs === true) {
             
             req.body.status = 0;
