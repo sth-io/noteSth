@@ -8,6 +8,8 @@
     "body-parser": "~1.0.0"
   },
   "devDependencies": {
-    
+    "chai": "~3.2.0",
+    "supertest": "~1.0.1",
+    "sinon": "~1.15.4"
   }
 }

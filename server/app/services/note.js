@@ -1,31 +1,23 @@
-var Note = require('../models/note');
-var reqFields = ['owner', 'title'];
+var Note = require('../models/note'),
+    checkReqKeys = require('./../functions/checkReqKeys'),
+
+    reqFields = ['owner', 'title', 'type', 'content'];
 
 
 module.exports = {
     add: function(req, res) {
-        var errs = [];
+        req.body.dateAdded = new Date();
         var note = new Note(req.body);
-        var verify =  function() {
-               
-                for (i = 0, len = reqFields.length; i < len; ++i) {
-                    if(Object.keys(req.body).indexOf(reqFields[i]) === -1) {
-                        errs.push(reqFields[i]);
-                    } 
-                }
-                if(errs.length == 0) {
-                    return true;
-                } else {
-                    return false;
-                } 
-            }
-        if(verify() == true) {
+        var errs = checkReqKeys(Note, req.body, reqFields);
+        if (errs === true) {
+            
+            req.body.status = 0;
             note.save(function(err) {
                 if (err) return err;
                 res.end('succes');
-            })            
+            })
         } else {
-                res.send(errs) 
+            res.json(400, {error:{invalid: errs}}); 
         }
     }
 }
