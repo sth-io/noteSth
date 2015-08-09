@@ -11,6 +11,7 @@ module.exports = {
             User.findOne({email: req.body.email}, function(err, fuser) {
                 if(!fuser) {
                     req.body.dateAdded = new Date();
+                    req.body.status = 0;
                     user = new User(req.body);
                     user.save(function(err, usr) {
                         if (err)  res.status(400).json(err);
@@ -40,5 +41,8 @@ module.exports = {
                 }
             })
     
+    },
+    remove: function(req, res) {
+        //to be implemeneted
     }
 }

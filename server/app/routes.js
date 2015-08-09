@@ -1,6 +1,6 @@
 var sNote   = require('./services/note'),
     Note    = require('./models/note'),
-    user    = require('./services/user');
+    sUser    = require('./services/user');
 
 
 
@@ -50,13 +50,16 @@ module.exports = function(app, passport) {
                     res.status(200).json(note);
                 }
             }
-        )});
+        )})
+        .delete(function(req,res) {
+            sNote.remove(req, res);
+        });
     app.route('/api/user')
         .post(function(req, res) {
-            user.register(req, res);
+            sUser.register(req, res);
         })
         .put(function(req, res) {
-            user.edit(req, res);
+            sUser.edit(req, res);
         })
 }
              

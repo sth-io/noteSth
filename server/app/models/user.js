@@ -7,7 +7,8 @@ var userSchema = new mongoose.Schema({
     email: String,
     password: String,
     dateAdded: Date,
-    dateModified: Date
+    dateModified: Date,
+    status: Number
 })
 
 // // create the model for users and expose it

@@ -7,6 +7,7 @@ var Note = require('../models/note'),
 module.exports = {
     add: function(req, res) {
         req.body.dateAdded = new Date();
+        req.body.status = 0;
         var note = new Note(req.body);
         var errs = checkReqKeys(req.body, reqFields);
         if (errs === true) {
@@ -19,5 +20,11 @@ module.exports = {
         } else {
             res.json(400, {error:{invalid: errs}}); 
         }
+    },
+    edit: function(req, res) {
+        //to be implemented
+    },
+    remove: function(req, res) {
+        //to be implemented
     }
 }
