@@ -23,9 +23,12 @@ module.exports = {
         }        
     },
     edit: function(req, res) {
-        console.log(req.body)
+        req.body.dateModified = new Date();
+        if(req.body.password) {
+            req.body.password = bcrypt.hashSync(req.body.password);
+        }
         User.update({
-                    "_id": req.params.which
+                    "_id": req.body.which
                 }, {
                     $set: req.body
                 },
