@@ -31,13 +31,13 @@ module.exports = {
             });
         }
     },
-    edit: function(req, res) {
+    edit: function(req, res, usr) {
         req.body.dateModified = new Date();
         if (req.body.password) {
             req.body.password = bcrypt.hashSync(req.body.password);
         }
         User.update({
-                "_id": req.body.which
+                "_id": usr._id
             }, {
                 $set: req.body
             },
@@ -55,7 +55,7 @@ module.exports = {
     },
     auth: function(req, res) {
         User.findOne({
-            name: req.body.name
+            email: req.body.email
         }, function(err, user) {
 
             if (err) throw err;
@@ -76,7 +76,7 @@ module.exports = {
 
                     // if user is found and password is right
                     // create a token
-                    var token = jwt.sign(user, app.get('secret'), {
+                    var token = jwt.sign(user, conf.secret, {
                         expiresInMinutes: 1440 // expires in 24 hours
                     });
 

@@ -18,24 +18,19 @@ describe("Token Auth", function() {
                     token: token
                 }
             };
-        console.log('checking token auth for no token');
+        
         auth({body: {'test': 'test'}, query: {'test': 'test'}, headers: {'test': 'test'}}, function(cb) {
             expect(cb).toBe(false);
         });
-        console.log('test OK');
-        
-        console.log('checking token auth for bad token');
+
         auth(req, function(cb) {
             expect(cb.email).toBe(user.email);
         });
-        console.log('test OK');
         
-        console.log('checking token auth for good token');
         req.body.token = "lel";
         auth(req, function(cb) {
             expect(cb).toBe(false);
         });
-        console.log('test OK');
         
     });
 });
