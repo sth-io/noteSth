@@ -1,12 +1,13 @@
-var sNote   = require('./services/note'),
-    Note    = require('./models/note'),
-    sUser    = require('./services/user');
+var sNote = require('./services/note'),
+    Note = require('./models/note'),
+    sUser = require('./services/user'),
+    auth = require('./services/auth');
 
 
 
 module.exports = function(app, passport) {
     app.get('/', function(req, res) {
-        res.end('pinged')
+        res.end('pinged');
     });
 
     app.route('/api/note')
@@ -14,15 +15,25 @@ module.exports = function(app, passport) {
             sNote.add(req, res);
         })
         .get(function(req, res) {
-            Note.find({
-                owner: 'test'
-            }, function(err, note) {
-                if (err) {
-                    res.status(400).json(err);
+        auth(req, function(cb) {
+        console.log('get')    
+                console.log(cb)
+                if (cb) {
+                    Note.find({
+                        owner: 'test'
+                    }, function(err, note) {
+                        if (err) {
+                            res.status(400).json(err);
+                        } else {
+                            res.status(200).json(note);
+                        }
+                    })
                 } else {
-                    res.status(200).json(note);
+                    res.status(400).json({
+                        'error': 'token invalid'
+                    })
                 }
-            })
+            });
         });
     app.route('/api/note/:id')
         .get(function(req, res) {
@@ -44,14 +55,15 @@ module.exports = function(app, passport) {
                     $set: req.body
                 },
                 function(err, note) {
-                if (err) {
-                    res.status(400).json(err);
-                } else {
-                    res.status(200).json(note);
+                    if (err) {
+                        res.status(400).json(err);
+                    } else {
+                        res.status(200).json(note);
+                    }
                 }
-            }
-        )})
-        .delete(function(req,res) {
+            )
+        })
+        .delete(function(req, res) {
             sNote.remove(req, res);
         });
     app.route('/api/user')
@@ -60,6 +72,9 @@ module.exports = function(app, passport) {
         })
         .put(function(req, res) {
             sUser.edit(req, res);
+        });
+    app.route('/api/auth')
+        .post(function(req, res) {
+            sUser.auth(req, res);
         })
 }
-             

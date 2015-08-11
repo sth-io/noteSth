@@ -6,9 +6,9 @@
     "express": "~4.10.2",
     "mongoose": "~3.8.1",
     "body-parser": "~1.0.0",
-    "bcrypt-nodejs": "latest"
+    "bcrypt-nodejs": "latest",
+    "jsonwebtoken": "~5.0.4",
+    "morgan": "~1.6.1"
   },
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }

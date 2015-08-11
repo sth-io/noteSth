@@ -6,16 +6,23 @@ var express     = require('express'),
     domain      = require('domain'),
     mongoose    = require('mongoose')
     http        = require('http'),
-    bodyParser     = require('body-parser'),
-    conf        = require('./config');
-
+    bodyParser  = require('body-parser'),
+    conf        = require('./config'),
+    jwt         = require('jsonwebtoken'),
+    morgan      = require('morgan');
 /**
  Connect to database
 **/
 mongoose.connect(conf.dbUrl); 
 
+//define secret for token
+app.set('secret', conf.secret); 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// log requests to the console
+app.use(morgan('dev'));
 
 //server port
 app.set('port', process.env.PORT || conf.port);

@@ -18,15 +18,21 @@ describe("checkReqKeys", function () {
         type: '1',
         owner: 'test'
     };
+    console.log('checking ReqKeys with bad note');
     expect(typeof check(badNote, reqFields).length).toBe("number");
+    console.log('test OK');
+    
     var mail = {
         email: 'testmail@test.com',
     };  
+    console.log('checking ReqKeys with good note');
     expect(check(mail, {email: "email"})).toBe(true);
+    console.log('test OK');
     var badmail = {
         email: 'asdf@asd',
-    };  
+    }; 
+    console.log('checking ReqKeys with bad mail');
     expect(typeof check(badmail, {email: "email"}).length).toBe("number");
-      
+    console.log('test OK');
   });
 });    
