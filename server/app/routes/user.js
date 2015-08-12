@@ -29,7 +29,16 @@ var notoken = function(res) {
                 notoken(res);
             }
         });
-        });
+        })
+    .get(function(req, res) {
+        auth(req, function(cb) {
+            if (cb) {
+                res.status(200).json(cb);
+            } else {
+                notoken(res);
+            }
+        })
+    });
     apiRoutes.route('/auth')
         .post(function(req, res) {
             sUser.auth(req, res);

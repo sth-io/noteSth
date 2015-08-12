@@ -65,9 +65,9 @@ module.exports = {
                     message: 'Authentication failed. User not found.'
                 });
             } else if (user) {
-
+                console.log(user.password)
                 // check if password matches
-                if (bcrypt.compareSync(req.body.password, user.password)) {
+                if (!bcrypt.compareSync(req.body.password, user.password)) {
                     res.json({
                         success: false,
                         message: 'Authentication failed. Wrong password.'
