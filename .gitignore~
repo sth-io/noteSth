@@ -27,4 +27,4 @@ build/Release
 node_modules
 
 lib
-app/assets/js/lib/
+assets/js/lib/
