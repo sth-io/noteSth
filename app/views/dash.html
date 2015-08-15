@@ -1,0 +1,19 @@
+<div class="container" ng-show="notes.length == 0">
+    <div class="row">
+        <div class="cta-note" ng-click="callmodal('addnote')">
+            <i class="icon i-add"></i>
+            <h2>You don't have any notes yet.</h2>
+            <p>Click here to add a new note!</p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" ng-repeat="note in notes">
+            <div class="box">
+                <h2>{{note.title}}</h2>
+                <p>{{note.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>

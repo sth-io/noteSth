@@ -6,7 +6,9 @@
     <link type="text/css" rel="stylesheet" href="../public/css/app.css"></link>
   </head>
   <body ng-controller="base">
-   <div ng-if="usr.email" ng-include="'/views/parts/header.html'"></div>
+   <div ng-show="usr.email" ng-include="'/views/parts/header.html'"></div>
+   <modal ng-show="modal" type="{{modal}}"></modal>
+   
     <div ng-view></div>
   </body>
 </html>

@@ -280,3 +280,75 @@ header {
         .marg(5);
     }
 }
+@keyframes modal {
+    from {
+        top: -100vh;
+    }
+    to {
+        top: 80px;
+    }
+}
+
+.note-modal {
+    z-index: 9000;
+    .box;
+    .box-green;
+    animation: modal .5s normal forwards ease-in-out;
+    animation-iteration-count: 1;
+    display:block;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    width: 420px;
+    margin-left: -210px;
+    .box-shadow(0px 6px 26px 0px rgba(0,0,0,0.3));
+    textarea {
+        display:block;
+        width: 100%;
+        background-color: transparent;
+        border-color: transparent;
+        min-height: 100px;
+    }
+}
+.type {
+    list-style: none;
+    .padd();
+    .marg(20, 0, 20);
+    li {
+        display: inline-block;
+    }
+    input {
+        display: none;
+    }
+    label {
+        opacity: .4;
+        .transition(opacity .4s);
+    }
+    input[type="radio"]:checked + label {
+        opacity: 1;
+    }
+}
+.buttons {
+    .padd(60,0,0);
+    .btn {
+        .marg(0,0,0,20);
+    }
+}
+.cta-note {
+    max-width: 600px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    .padd(80);
+    .text-center;
+    opacity: 0.7;
+    i {
+        opacity: 0.5;
+    }
+    h2 {
+        .font-size(40);
+    }
+    p {
+        .font-size(20);
+    }
+}

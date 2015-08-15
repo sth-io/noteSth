@@ -1,0 +1,24 @@
+<div ng-controller="note">
+    <input type="text" placeholder="Note title" ng-model="note.body.title">
+    <ul class="type">
+        <li>
+            <input type="radio" ng-model="note.body.type" id="text" name="type" value="text" checked>
+            <label for="text"><i class="icon i-text"></i>
+            </label>
+        </li>
+        <li>
+            <input type="radio"  ng-model="note.body.type" id="list" name="type" value="list">
+            <label for="list"><i class="icon i-list"></i>
+            </label>
+        </li>
+    </ul>
+    <textarea name="notecontent" ng-model="note.body.content" id="" placeholder="Note content"></textarea>
+    <div class="text-right buttons">
+        <div ng-click="note.send(); callmodal()" class="btn btn-g">save my note</div>
+
+        <div class="btn right" ng-click="callmodal()">cancel</div>
+    </div>
+    {{note}}
+</div>
+
+
