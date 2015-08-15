@@ -1,4 +1,4 @@
-![Alt text](https://raw.githubusercontent.com/sth-group/noteSth/master/note_sth_logo.png "NoteSth")
+![Alt text](https://raw.githubusercontent.com/sth-group/noteSth/master/note_sth.png "NoteSth")
 
 Open Source app with sticky notes.
 
