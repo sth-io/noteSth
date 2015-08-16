@@ -10,7 +10,8 @@ var noteSchema = new mongoose.Schema({
     content: String,
     dateAdded: Date,
     dateModified: Date,
-    status: Number    
+    status: Number,
+    color: String
 })
 
 // // create the model for users and expose it

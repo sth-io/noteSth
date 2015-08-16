@@ -12,6 +12,31 @@
             </label>
         </li>
     </ul>
+    <ul class="color">
+        <li>
+           <input type="radio" ng-model="note.body.type" id="sea" name="type" value="sea" checked>
+           <input type="radio" ng-model="note.body.type" id="sand" name="type" value="sand" >
+           <input type="radio" ng-model="note.body.type" id="red" name="type" value="red" >
+           <input type="radio" ng-model="note.body.type" id="orange" name="type" value="orange" >
+           <input type="radio" ng-model="note.body.type" id="green" name="type" value="green" > 
+        </li>
+        <li>
+            <label for="sea"> <span class="sqr sqr-sea"></span></label>
+        </li>
+        <li>
+            <label for="sand"> <span class="sqr sqr-sand"></span></label>
+        </li>
+        <li>
+            <label for="red"> <span class="sqr sqr-red"></span></label>
+        </li>
+        <li>
+            <label for="orange"> <span class="sqr sqr-orange"></span></label>
+        </li>
+        <li>
+            <label for="green"> <span class="sqr sqr-green"></span></label>
+        </li>
+        
+    </ul>
     <textarea name="notecontent" ng-model="note.body.content" id="" placeholder="Note content"></textarea>
     <div class="text-right buttons">
         <div ng-click="note.send(); callmodal()" class="btn btn-g">save my note</div>
@@ -20,5 +45,7 @@
     </div>
     {{note}}
 </div>
+
+
 
 

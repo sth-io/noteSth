@@ -13,9 +13,9 @@ module.exports = {
         var errs = checkReqKeys(req.body, reqFields);
         if (errs === true) {
             req.body.status = 0;
-            note.save(function(err) {
+            note.save(function(err, note) {
                 if (err) return err;
-                res.end('succes');
+                res.status(200).json(note);
             });
         } else {
             res.json(400, {error:{invalid: errs}}); 
